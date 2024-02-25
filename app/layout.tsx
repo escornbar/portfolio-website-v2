@@ -3,6 +3,8 @@ import { Manrope as FontSans } from "next/font/google";
 import "./globals.css";
 
 import { cn } from "@/lib/utils";
+import Navbar from "@/components/custom/Navbar";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -27,7 +29,15 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
