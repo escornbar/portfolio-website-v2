@@ -6,6 +6,25 @@ import {
 } from "@radix-ui/react-icons";
 import Link from "next/link";
 
+const socials = [
+  {
+    icon: <GitHubLogoIcon className="w-5 h-5" />,
+    href: "https://www.github.com/escornbar",
+  },
+  {
+    icon: <LinkedInLogoIcon className="w-5 h-5" />,
+    href: "https://www.linkedin.com/in/syaamilfaiq",
+  },
+  {
+    icon: <TwitterLogoIcon className="w-5 h-5" />,
+    href: "https://www.x.com/syaamilfaiq",
+  },
+  {
+    icon: <EnvelopeClosedIcon className="w-5 h-5" />,
+    href: "mailto:syaamil1136@gmail.com",
+  },
+];
+
 export default function Footer() {
   return (
     <>
@@ -23,34 +42,16 @@ function SocialLinks() {
   return (
     <>
       <div className="flex gap-6">
-        <Link
-          href="/github.com/escornbar"
-          className="hover:text-primary transition-colors ease-linear duration-300"
-          target="_blank"
-        >
-          <GitHubLogoIcon className="w-5 h-5" />
-        </Link>
-        <Link
-          href="/linked.in/syaamilfaiq"
-          className="hover:text-primary transition-colors ease-linear duration-300"
-          target="_blank"
-        >
-          <LinkedInLogoIcon className="w-5 h-5" />
-        </Link>
-        <Link
-          href="/x.com/syaamilfaiq"
-          className="hover:text-primary transition-colors ease-linear duration-300"
-          target="_blank"
-        >
-          <TwitterLogoIcon className="w-5 h-5" />
-        </Link>
-        <Link
-          href="mailto:syaamil1136@gmail.com"
-          className="hover:text-primary transition-colors ease-linear duration-300"
-          target="_blank"
-        >
-          <EnvelopeClosedIcon className="w-5 h-5" />
-        </Link>
+        {socials.map((social, index) => (
+          <Link
+            href={social.href}
+            className="hover:text-primary transition-colors ease-linear duration-300"
+            target="_blank"
+            key={index}
+          >
+            {social.icon}
+          </Link>
+        ))}
       </div>
     </>
   );
