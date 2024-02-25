@@ -89,7 +89,11 @@ export default function Navbar() {
           <NavigationMenuList>
             {links.map((link, idx) => (
               <NavigationMenuItem key={idx}>
-                <Link href={pathCheck(pathname, link)} legacyBehavior passHref>
+                <Link
+                  href={pathCheck(pathname, link)}
+                  legacyBehavior
+                  passHref
+                >
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     {link.label}
                   </NavigationMenuLink>
