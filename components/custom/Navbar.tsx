@@ -27,49 +27,42 @@ interface Link {
 
 const links = [
   {
-    label: "Home",
+    label: "home",
     href: {
       pathname: "/",
       id: "#",
     },
   },
   {
-    label: "About",
-    href: {
-      pathname: "/",
-      id: "#about",
-    },
-  },
-  {
-    label: "Experience",
+    label: "experience",
     href: {
       pathname: "/",
       id: "#experience",
     },
   },
   {
-    label: "Projects",
+    label: "projects",
     href: {
       pathname: "/",
       id: "#projects",
     },
   },
   {
-    label: "Stack",
+    label: "stack",
     href: {
       pathname: "/",
       id: "#stack",
     },
   },
   {
-    label: "Contact",
+    label: "contact",
     href: {
       pathname: "/",
       id: "#contact",
     },
   },
   {
-    label: "Resume",
+    label: "resume",
     href: {
       pathname: "/resume",
       id: "#",
