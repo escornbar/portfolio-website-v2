@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Manrope as FontSans } from "next/font/google";
+import { Manrope } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 import { cn } from "@/lib/utils";
@@ -7,9 +8,9 @@ import Navbar from "@/components/custom/Navbar";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import Footer from "@/components/custom/Footer";
 
-export const fontSans = FontSans({
+export const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-manrope",
 });
 
 export const metadata: Metadata = {
@@ -27,7 +28,7 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
+          manrope.variable
         )}
       >
         <ThemeProvider
