@@ -14,11 +14,7 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
 interface Link {
@@ -121,7 +117,7 @@ export default function Navbar() {
 function Logo() {
   return (
     <Link href="/">
-      <div className="font-black hover:text-primary dark:hover:text-primary-foreground text-2xl">
+      <div className="font-black hover:text-primary dark:hover:text-primary-foreground text-2xl transition-colors ease-in-out duration-500">
         syaamilfaiq
       </div>
     </Link>
@@ -166,11 +162,7 @@ function MobileNav() {
               onClick={() => setOpen(false)}
               asChild
             >
-              <Link
-                href={pathCheck(pathname, link)}
-              >
-                {link.label}
-              </Link>
+              <Link href={pathCheck(pathname, link)}>{link.label}</Link>
             </Button>
           ))}
         </div>
