@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Moon, Sun } from "lucide-react";
+import { Menu, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -14,6 +14,12 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger
+} from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 
 interface Link {
   label: string;
@@ -83,13 +89,14 @@ function pathCheck(pathname: string, obj: Link) {
 
 export default function Navbar() {
   const pathname = usePathname();
+
   return (
     <>
       <div
         className={`container mx-auto flex justify-between items-center py-8 sticky`}
       >
         <Logo />
-        <NavigationMenu>
+        <NavigationMenu className="hidden lg:flex">
           <NavigationMenuList>
             {links.map((link, idx) => (
               <NavigationMenuItem key={idx}>
@@ -102,7 +109,10 @@ export default function Navbar() {
             ))}
           </NavigationMenuList>
         </NavigationMenu>
-        <ThemeToggle />
+        <div className="flex gap-1">
+          <ThemeToggle />
+          <MobileNav />
+        </div>
       </div>
     </>
   );
@@ -127,9 +137,44 @@ function ThemeToggle() {
       size="icon"
       onClick={() => (theme == "dark" ? setTheme("light") : setTheme("dark"))}
     >
-      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      <Sun className="h-6 w-6 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+      <Moon className="absolute h-6 w-6 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
       <span className="sr-only">Toggle theme</span>
     </Button>
+  );
+}
+
+function MobileNav() {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild className="lg:hidden">
+        <Button variant={"ghost"} size={"icon"} onClick={() => setOpen(true)}>
+          <Menu className="w-6 h-6" />
+        </Button>
+      </SheetTrigger>
+      <SheetContent className="w-48 pt-10">
+        <div className="flex flex-col gap-1">
+          {links.map((link, idx) => (
+            <Button
+              variant={"ghost"}
+              size={"lg"}
+              key={idx}
+              className={cn("justify-start px-0 font-bold")}
+              onClick={() => setOpen(false)}
+              asChild
+            >
+              <Link
+                href={pathCheck(pathname, link)}
+              >
+                {link.label}
+              </Link>
+            </Button>
+          ))}
+        </div>
+      </SheetContent>
+    </Sheet>
   );
 }
