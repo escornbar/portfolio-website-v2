@@ -89,11 +89,7 @@ export default function Navbar() {
           <NavigationMenuList>
             {links.map((link, idx) => (
               <NavigationMenuItem key={idx}>
-                <Link
-                  href={pathCheck(pathname, link)}
-                  legacyBehavior
-                  passHref
-                >
+                <Link href={pathCheck(pathname, link)} legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     {link.label}
                   </NavigationMenuLink>
@@ -114,7 +110,7 @@ export default function Navbar() {
 function Logo() {
   return (
     <Link href="/">
-      <div className="font-black hover:text-primary dark:hover:text-primary-foreground text-2xl transition-colors ease-in-out duration-500">
+      <div className="font-black hover:text-primary text-2xl transition-colors ease-linear duration-300">
         syaamilfaiq
       </div>
     </Link>
