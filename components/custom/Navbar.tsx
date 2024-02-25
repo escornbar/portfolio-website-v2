@@ -89,7 +89,7 @@ export default function Navbar() {
   return (
     <>
       <div
-        className={`container mx-auto flex justify-between items-center py-8 sticky`}
+        className={`container mx-auto flex justify-between items-center py-8 sticky z-20`}
       >
         <Logo />
         <NavigationMenu className="hidden lg:flex">
