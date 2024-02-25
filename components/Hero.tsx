@@ -1,9 +1,10 @@
 import Image from "next/image";
+import BackgroundBeams from "./aceternity/BackgroundBeams";
 
 export default function Hero() {
   return (
     <>
-      <div className="flex flex-col md:grid md:grid-cols-2 md:justify-center md:items-center min-h-[calc(100vh-30vh)] gap-16 ">
+      <div className="flex flex-col md:grid md:grid-cols-2 md:justify-center md:items-center min-h-[calc(100vh-30vh)] gap-16 antialiased">
         <div className="relative flex flex-col">
           <h2 className="text-3xl font-bold tracking-tight text-primary overflow-hidden inline-flex flex-col h-[calc(theme(fontSize.3xl)*theme(lineHeight.tight))] md:h-[calc(theme(fontSize.4xl)*theme(lineHeight.none))]">
             <ul className="block text-left leading-tight [&_li]:block animate-text-slide-3">
@@ -39,6 +40,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
+        <BackgroundBeams />
       </div>
     </>
   );

@@ -1,6 +1,12 @@
 import type { Config } from "tailwindcss";
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
+const colors = require("tailwindcss/colors");
+
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
+
 const config = {
   darkMode: ["class"],
   content: [
@@ -19,6 +25,17 @@ const config = {
       },
     },
     extend: {
+      fontSize: {
+        sm: "clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem)",
+        base: "clamp(1rem, 0.34vw + 0.91rem, 1.19rem)",
+        lg: "clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem)",
+        xl: "clamp(1.56rem, 1vw + 1.31rem, 2.11rem)",
+        "2xl": "clamp(1.95rem, 1.56vw + 1.56rem, 2.81rem)",
+        "3xl": "clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem)",
+        "4xl": "clamp(3.05rem, 3.54vw + 2.17rem, 5rem)",
+        "5xl": "clamp(3.81rem, 5.18vw + 2.52rem, 6.66rem)",
+        "6xl": "clamp(4.77rem, 7.48vw + 2.9rem, 8.88rem)"
+      },
       fontFamily: {
         sans: ["var(--font-manrope)", ...fontFamily.sans],
       },
@@ -65,7 +82,8 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "text-slide-3": "text-slide-3 7.5s cubic-bezier(0.83, 0, 0.17, 1) infinite",
+        "text-slide-3":
+          "text-slide-3 7.5s cubic-bezier(0.83, 0, 0.17, 1) infinite",
       },
       keyframes: {
         "accordion-down": {
@@ -93,7 +111,22 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/aspect-ratio"),
+    addVariablesForColors,
+  ],
 } satisfies Config;
+
+function addVariablesForColors({ addBase, theme }: any) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+
+  addBase({
+    ":root": newVars,
+  });
+}
 
 export default config;
