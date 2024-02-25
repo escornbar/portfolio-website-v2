@@ -68,13 +68,13 @@ const experiences: Experience[] = [
 
 export default function Experience() {
   return (
-    <div className="flex flex-col mt-40" id="#experience">
+    <div className="flex flex-col mt-40">
       <h2 className="mb-40 text-5xl font-bold tracking-tight text-center text-primary">
         experience
       </h2>
 
       <TracingBeam>
-        <div className="flex flex-col gap-20">
+        <div className="flex flex-col gap-20" id="experience">
           {experiences.map((experience, index) => (
             <>
               <ExperienceComponent experience={experience} key={index} />
