@@ -55,13 +55,6 @@ const links = [
     },
   },
   {
-    label: "contact",
-    href: {
-      pathname: "/",
-      id: "#contact",
-    },
-  },
-  {
     label: "resume",
     href: {
       pathname: "/resume",
