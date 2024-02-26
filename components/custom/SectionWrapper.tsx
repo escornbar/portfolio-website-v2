@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+
 export default function SectionWrapper({
   children,
   className,
@@ -6,7 +8,12 @@ export default function SectionWrapper({
   className?: string;
 }) {
   return (
-    <div className="flex flex-col justify-center items-center mt-60">
+    <div
+      className={cn(
+        "container mx-auto flex flex-col justify-center items-center mt-60 lg:px-24",
+        className
+      )}
+    >
       {children}
     </div>
   );
