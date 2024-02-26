@@ -75,9 +75,7 @@ export default function Experience() {
 
       <div className="flex flex-col gap-20" id="experience">
         {experiences.map((experience, index) => (
-          <>
             <ExperienceComponent experience={experience} key={index} />
-          </>
         ))}
       </div>
     </TracingBeam>

@@ -180,8 +180,8 @@ function StackTableRow({
         {stack.items.map((item, i) => (
           <>
             {item.link ? (
-              <Link href={item.link}>
-                <span key={i} className="hover:text-primary/80">
+              <Link href={item.link} key={i}>
+                <span className="hover:text-primary/80">
                   {item.name}
                 </span>
               </Link>
