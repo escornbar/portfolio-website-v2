@@ -64,11 +64,7 @@ const stackItems: Stack[] = [
 ];
 
 export default function Stack() {
-  return (
-    <div className="flex flex-col justify-center items-center mt-60">
-      <StackTable />
-    </div>
-  );
+  return <StackTable />;
 }
 
 function StackTable() {

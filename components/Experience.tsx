@@ -8,7 +8,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-  StarsCard
+  StarsCard,
 } from "./ui/card";
 
 interface Experience {
@@ -68,21 +68,19 @@ const experiences: Experience[] = [
 
 export default function Experience() {
   return (
-    <div className="flex flex-col mt-40">
-      <TracingBeam>
+    <TracingBeam>
       <h2 className="mb-40 text-5xl font-bold tracking-tight text-center text-primary">
         experience
       </h2>
 
-        <div className="flex flex-col gap-20" id="experience">
-          {experiences.map((experience, index) => (
-            <>
-              <ExperienceComponent experience={experience} key={index} />
-            </>
-          ))}
-        </div>
-      </TracingBeam>
-    </div>
+      <div className="flex flex-col gap-20" id="experience">
+        {experiences.map((experience, index) => (
+          <>
+            <ExperienceComponent experience={experience} key={index} />
+          </>
+        ))}
+      </div>
+    </TracingBeam>
   );
 }
 

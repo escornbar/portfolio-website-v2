@@ -83,7 +83,7 @@ const projects: Project[] = [
 
 export default function Projects() {
   return (
-    <div className="flex flex-col mt-40">
+    <>
       <h2 className="mb-40 text-5xl font-bold tracking-tight text-center text-primary">
         projects
       </h2>
@@ -101,7 +101,7 @@ export default function Projects() {
           />
         ))}
       </div>
-    </div>
+    </>
   );
 }
 
