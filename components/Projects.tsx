@@ -76,8 +76,8 @@ const projects: Project[] = [
       "Spring Boot",
       "ElephantSQL",
     ],
-    github: "https://github.com/GnosisUM/gnosis-vc",
-    live: "https://gnosis-vc-1.vercel.app",
+    github: "https://github.com/escornbar/impacthack-2023",
+    live: null,
   },
 ];
 
