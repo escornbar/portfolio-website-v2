@@ -75,7 +75,7 @@ export default function Navbar() {
   return (
     <>
       <div className={`min-w-screen sticky top-0 z-20 backdrop-blur-lg backdrop-filter`}>
-        <div className="container mx-auto flex justify-between items-center py-8">
+        <div className="container mx-auto flex justify-between items-center py-6">
           <Logo />
           <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList>
