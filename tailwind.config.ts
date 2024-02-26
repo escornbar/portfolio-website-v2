@@ -74,6 +74,7 @@ const config = {
         "text-slide-3":
           "text-slide-3 7.5s cubic-bezier(0.83, 0, 0.17, 1) infinite",
         spotlight: "spotlight 2s ease .75s 1 forwards",
+        "meteor-effect": "meteor 5s linear infinite",
       },
       keyframes: {
         "accordion-down": {
@@ -97,7 +98,6 @@ const config = {
           "100%": {
             transform: "translateY(-75%)",
           },
-          
         },
         spotlight: {
           "0%": {
@@ -107,6 +107,14 @@ const config = {
           "100%": {
             opacity: "1",
             transform: "translate(-50%,-40%) scale(1)",
+          },
+        },
+        meteor: {
+          "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
+          "70%": { opacity: "1" },
+          "100%": {
+            transform: "rotate(215deg) translateX(-500px)",
+            opacity: "0",
           },
         },
       },
