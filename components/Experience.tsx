@@ -1,7 +1,7 @@
 import TracingBeam from "@/components/aceternity/TracingBeam";
 import ScrollReveal from "@/components/custom/ScrollReveal";
 import { cn } from "@/lib/utils";
-import { Badge } from "./ui/badge";
+import { Badge } from "@/components/ui/badge";
 import {
   CardContent,
   CardDescription,
@@ -69,11 +69,11 @@ const experiences: Experience[] = [
 export default function Experience() {
   return (
     <div className="flex flex-col mt-40">
+      <TracingBeam>
       <h2 className="mb-40 text-5xl font-bold tracking-tight text-center text-primary">
         experience
       </h2>
 
-      <TracingBeam>
         <div className="flex flex-col gap-20" id="experience">
           {experiences.map((experience, index) => (
             <>
