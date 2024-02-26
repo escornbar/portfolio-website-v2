@@ -6,7 +6,7 @@ export default function Hero() {
     <>
       <div className="flex flex-col md:grid md:grid-cols-2 md:justify-center md:items-center min-h-[80vh] gap-16 antialiased">
         <div className="relative flex flex-col">
-          <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-primary overflow-hidden inline-flex flex-col h-[calc(theme(fontSize.4xl)*theme(lineHeight.snug))] md:h-[calc(theme(fontSize.5xl)*theme(lineHeight.none))] lg:h-[calc(theme(fontSize.7xl)*theme(lineHeight.tight))]">
+          <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary overflow-hidden inline-flex flex-col h-[calc(theme(fontSize.4xl)*theme(lineHeight.snug))] md:h-[calc(theme(fontSize.5xl)*theme(lineHeight.none))] lg:h-[calc(theme(fontSize.5xl)*theme(lineHeight.tight))]">
             <ul className="block text-left leading-tight [&_li]:block animate-text-slide-3">
               <li>software engineer</li>
               <li>ui/ux</li>
