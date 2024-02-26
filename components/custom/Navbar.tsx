@@ -74,26 +74,32 @@ export default function Navbar() {
 
   return (
     <>
-      <div
-        className={`container mx-auto flex justify-between items-center py-8 sticky z-20`}
-      >
-        <Logo />
-        <NavigationMenu className="hidden lg:flex">
-          <NavigationMenuList>
-            {links.map((link, idx) => (
-              <NavigationMenuItem key={idx}>
-                <Link href={pathCheck(pathname, link)} legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    {link.label}
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
-        <div className="flex gap-1">
-          <ThemeToggle />
-          <MobileNav />
+      <div className={`min-w-screen sticky top-0 z-20 backdrop-blur-lg backdrop-filter`}>
+        <div className="container mx-auto flex justify-between items-center py-8">
+          <Logo />
+          <NavigationMenu className="hidden lg:flex">
+            <NavigationMenuList>
+              {links.map((link, idx) => (
+                <NavigationMenuItem key={idx}>
+                  <Link
+                    href={pathCheck(pathname, link)}
+                    legacyBehavior
+                    passHref
+                  >
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      {link.label}
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+          <div className="flex gap-1">
+            <ThemeToggle />
+            <MobileNav />
+          </div>
         </div>
       </div>
     </>
