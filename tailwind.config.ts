@@ -73,6 +73,7 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         "text-slide-3":
           "text-slide-3 7.5s cubic-bezier(0.83, 0, 0.17, 1) infinite",
+        spotlight: "spotlight 2s ease .75s 1 forwards",
       },
       keyframes: {
         "accordion-down": {
@@ -95,6 +96,17 @@ const config = {
           },
           "100%": {
             transform: "translateY(-75%)",
+          },
+          
+        },
+        spotlight: {
+          "0%": {
+            opacity: "0",
+            transform: "translate(-72%, -62%) scale(0.5)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translate(-50%,-40%) scale(1)",
           },
         },
       },
