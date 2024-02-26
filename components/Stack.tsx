@@ -7,59 +7,120 @@ import {
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Meteors } from "./aceternity/Metors";
+import Link from "next/link";
 
 interface Stack {
   type: string;
-  items: string[];
+  items: StackItem[];
+}
+
+interface StackItem {
+  name: string;
+  link: string | null;
 }
 
 const stackItems: Stack[] = [
   {
     type: "Machine",
-    items: ["Illegear Onyx V Ryzen"],
+    items: [
+      {
+        name: "Illegear Onyx V Ryzen",
+        link: "https://www.illegear.com/staging/en/onyx-series/30-onyx-v-ryzen.html",
+      },
+    ],
   },
   {
     type: "CPU",
-    items: ["Ryzen 7 4800H"],
+    items: [{ name: "Ryzen 7 4800H", link: null }],
   },
   {
     type: "GPU",
-    items: ["NVIDIA GeForce GTX1650Ti 4GB GDDR6"],
+    items: [{ name: "NVIDIA GeForce GTX1650Ti 4GB GDDR6", link: null }],
   },
   {
     type: "Memory",
-    items: ["2x Corsair VENGEANCE 8GB DDR4 SODIMM 3200MHz"],
+    items: [
+      {
+        name: "2x Corsair VENGEANCE 8GB DDR4 SODIMM 3200MHz",
+        link: "https://shopee.com.my/CORSAIR-Vengeance-SODIMM-DDR4-2400Mhz-2666Mhz-3200Mhz-Notebook-Laptop-SODIMM-RAM-(4GB-8GB-16GB-32GB)-i.5954247.6463886931?sp_atk=b7cbd8a4-ba54-44c0-be09-ac6c0fad6536&xptdk=b7cbd8a4-ba54-44c0-be09-ac6c0fad6536",
+      },
+    ],
   },
   {
     type: "Monitor",
     items: [
-      `MSI Optix G242 24" 144Hz Gaming Monitor`,
-      "Dell C2422HE Conferencing Monitor",
+      {
+        name: `MSI Optix G242 24" 144Hz Gaming Monitor`,
+        link: "https://shopee.com.my/MSI-Optix-G242-Gaming-Monitor-(-23.8-Inch-1920-x-1080-IPS-144HZ-)-i.5529122.9416980062",
+      },
+      {
+        name: "Dell C2422HE Conferencing Monitor",
+        link: "https://shopee.com.my/Dell-C2422HE-24-FHD-1920-x-1080-5MS-IPS-USB-TYPE-C-Video-Conferencing-LED-Monitor-with-Webcam-(HDMI--DP--USB-C)-i.157405.18179167194",
+      },
     ],
   },
   {
     type: "Keyboard",
-    items: ["Razer Huntsman V2 TKL", "Razer Purple Optical Switches"],
+    items: [
+      {
+        name: "Razer Huntsman V2 TKL",
+        link: "https://shopee.com.my/Razer-Huntsman-V2-TKL-Tenkeyless-Optical-Gaming-Keyboard-i.316967256.12313331942",
+      },
+      { name: "Razer Purple Optical Switches", link: null },
+    ],
   },
   {
     type: "Mouse",
-    items: ["Razer Viper Mini"],
+    items: [
+      {
+        name: "Razer Viper Mini",
+        link: "https://shopee.com.my/RAZER-Viper-Mini-Gaming-Mouse-RZ01-03250100-R3M1-i.104569008.5139746548?sp_atk=d62a8e09-7d62-4489-806c-e4cfbe058d96&xptdk=d62a8e09-7d62-4489-806c-e4cfbe058d96",
+      },
+    ],
   },
   {
     type: "Audio",
-    items: ["Razer Kraken", "Apple Airpods Pro"],
+    items: [
+      {
+        name: "Razer Kraken 7.1 Surround Sound Wired",
+        link: "https://shopee.com.my/Razer-Kraken-Multi-Platform-Competitive-7.1-Surround-Sound-Wired-Gaming-Headset-i.316967256.3356816033",
+      },
+      {
+        name: "Apple Airpods Pro",
+        link: "https://www.apple.com/my/shop/product/MTJV3ZA/A/airpods-pro",
+      },
+    ],
   },
   {
     type: "Microphone",
-    items: ["Fifine T669"],
+    items: [
+      {
+        name: "Fifine T669",
+        link: "https://shopee.com.my/Fifine-T669-USB-Microphone-Bundle-With-Arm-Stand-Shock-Mount-And-Pop-Filter-For-Streaming-Podcasting-i.318313205.5756366929",
+      },
+    ],
+  },
+  {
+    type: "Tablet",
+    items: [
+      {
+        name: "Apple iPad 10.9-inch (10th generation)",
+        link: "https://www.apple.com/my/ipad-10.9/",
+      },
+    ],
   },
   {
     type: "IDE",
-    items: ["Microsoft Visual Studio Code"],
+    items: [
+      {
+        name: "Microsoft Visual Studio Code",
+        link: "https://code.visualstudio.com",
+      },
+    ],
   },
   {
     type: "Design Tool",
-    items: ["Figma"],
+    items: [{ name: "Figma", link: "https://www.figma.com" }],
   },
 ];
 
@@ -115,13 +176,21 @@ function StackTableRow({
       <p className="font-bold text-sm md:col-span-1 xl:text-base">
         {stack.type}
       </p>
-      <p className=" flex flex-col text-sm text-muted-foreground md:col-span-2 xl:text-base">
+      <div className="flex flex-col text-sm text-muted-foreground md:col-span-2 xl:text-base">
         {stack.items.map((item, i) => (
           <>
-            <span key={i}>{item}</span>
+            {item.link ? (
+              <Link href={item.link}>
+                <span key={i} className="hover:text-primary/80">
+                  {item.name}
+                </span>
+              </Link>
+            ) : (
+              <span key={i}>{item.name}</span>
+            )}
           </>
         ))}
-      </p>
+      </div>
     </div>
   );
 }
