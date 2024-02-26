@@ -1,5 +1,6 @@
 import Experience from "@/components/Experience";
 import Hero from "@/components/Hero";
+import Projects from "@/components/Projects";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
         <Hero />
         <div className="lg:px-24">
           <Experience />
+          <Projects />
         </div>
       </div>
     </>
