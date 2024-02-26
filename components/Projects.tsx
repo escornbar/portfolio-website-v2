@@ -95,8 +95,8 @@ export default function Projects() {
         <Spotlight fill="white" />
         {projects.map((project, index) => (
           <GradientCard
-            project={project}
             key={index}
+            project={project}
             className={index == 0 ? "lg:col-span-12" : "lg:col-span-6"}
           />
         ))}
@@ -185,9 +185,7 @@ function GradientCard({
           <p className="text-card-foreground">{project.description}</p>
           <div className="flex gap-2 flex-wrap">
             {project.stack.map((stack, index) => (
-              <>
-                <Badge key={index}>{stack}</Badge>
-              </>
+              <Badge key={index}>{stack}</Badge>
             ))}
           </div>
         </div>
