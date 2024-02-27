@@ -11,6 +11,15 @@ import { Spotlight } from "./aceternity/Spotlight";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import SectionWrapper from "./custom/SectionWrapper";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { useIsVisible } from "@/hooks/useIsVisible";
 
 interface Project {
   feature_cover: string;
@@ -89,13 +98,10 @@ export default function Projects() {
         projects
       </h2>
 
-      <div
-        className="grid grid-cols-1 gap-20 lg:grid-cols-12 lg:gap-6"
-        id="projects"
-      >
-        <Spotlight fill="white" className="hidden lg:block"/>
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-12" id="projects">
+        <Spotlight fill="white" className="hidden lg:block" />
         {projects.map((project, index) => (
-          <GradientCard
+          <ShinyCard
             key={index}
             project={project}
             className={index == 0 ? "lg:col-span-12" : "lg:col-span-6"}
@@ -106,51 +112,44 @@ export default function Projects() {
   );
 }
 
-function GradientCard({
+function ShinyCard({
   project,
   className,
 }: {
   project: Project;
   className?: string;
 }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const shadowRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (cardRef.current) {
-      const { left, top } = cardRef.current.getBoundingClientRect();
-      const x = e.clientX - left; // x position within the element.
-      const y = e.clientY - top; // y position within the element.
-
-      if (shadowRef.current) {
-        shadowRef.current.style.top = `${y}px`;
-        shadowRef.current.style.left = `${x}px`;
-        shadowRef.current.style.transform = "translate(-50%, -50%)";
-        (
-          cardRef.current as any
-        ).style = `--cursor-x: ${x}px; --cursor-y: ${y}px`;
-      }
-    }
-  };
+  const ref = useRef(null);
+  const isVisible = useIsVisible(ref);
 
   return (
-    <div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      className={cn(
-        "relative z-0 group overflow-hidden h-full border border-white/[0.08] rounded-xl bg-[radial-gradient(450px_circle_at_var(--cursor-x)_var(--cursor-y),#8ecae6_0,transparent,transparent_80%)]",
-        className
-      )}
-    >
-      <AspectRatio ratio={10 / 5}>
-        <Image
-          src={project.feature_cover}
-          alt="geniesafe"
-          fill
-          className="object-cover border-t border-white/[0.08] rounded-t-xl"
+    <Card className={cn("w-full", className)}>
+      <CardHeader
+        className="p-0 relative overflow-clip space-y-0 rounded-t-xl"
+        ref={ref}
+      >
+        <AspectRatio ratio={16 / 9}>
+          <Image
+            src={project.feature_cover}
+            alt="geniesafe"
+            fill
+            sizes="100vw"
+            className={cn(
+              "scale-105 object-cover border-t border-white/[0.08] rounded-t-xl",
+              isVisible ? "ease-in-out duration-1000 scale-100 delay-300" : ""
+            )}
+          />
+        </AspectRatio>
+        <div
+          className={cn(
+            "absolute bg-black border-t border-white/[0.08] rounded-t-xl w-full h-full opacity-60",
+            isVisible
+              ? "transition-opacity duration-1000 opacity-0 delay-300"
+              : ""
+          )}
         />
-      </AspectRatio>
-      <div className="space-y-6 relative z-10 p-6">
+      </CardHeader>
+      <CardContent className="pt-6 space-y-6">
         <div className="flex justify-between">
           <div className="flex flex-col space-y-1.5">
             <h3 className="text-xl font-semibold leading-none tracking-tight">
@@ -176,17 +175,12 @@ function GradientCard({
           </div>
         </div>
         <p className="text-card-foreground">{project.description}</p>
-        <div className="flex gap-2 flex-wrap">
-          {project.stack.map((stack, index) => (
-            <Badge key={index}>{stack}</Badge>
-          ))}
-        </div>
-      </div>
-      <div
-        ref={shadowRef}
-        className="opacity-0 absolute top-0 left-0 w-4/5 h-4/5 duration-150 group-hover:opacity-90"
-      ></div>
-      <div className="absolute inset-[1px] -z-10 rounded-b-xl bg-card"></div>
-    </div>
+      </CardContent>
+      <CardFooter className="flex gap-2 flex-wrap">
+        {project.stack.map((stack, index) => (
+          <Badge key={index}>{stack}</Badge>
+        ))}
+      </CardFooter>
+    </Card>
   );
 }
