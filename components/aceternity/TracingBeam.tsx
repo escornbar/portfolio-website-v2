@@ -37,7 +37,7 @@ export default function TracingBeam({
     }
   }, []);
   useEffect(() => {
-    return scrollYProgressVelocity.on("change", (latestVelocity) => {
+    return scrollYProgressVelocity.on("change",(latestVelocity) => {
       setVelocity(latestVelocity);
     });
   });
