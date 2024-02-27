@@ -93,7 +93,7 @@ export default function Projects() {
         className="grid grid-cols-1 gap-20 lg:grid-cols-12 lg:gap-6"
         id="projects"
       >
-        <Spotlight fill="white" />
+        <Spotlight fill="white" className="hidden lg:block"/>
         {projects.map((project, index) => (
           <GradientCard
             key={index}
