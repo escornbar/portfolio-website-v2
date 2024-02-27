@@ -75,7 +75,7 @@ export default function Experience() {
 
       <div className="flex flex-col gap-20" id="experience">
         {experiences.map((experience, index) => (
-            <ExperienceComponent experience={experience} key={index} />
+          <ExperienceComponent experience={experience} key={index} />
         ))}
       </div>
     </TracingBeam>
@@ -107,11 +107,9 @@ function ExperienceComponent({ experience }: { experience: Experience }) {
         </div>
         <CardFooter className={cn("flex gap-2 flex-wrap")}>
           {experience.skills.map((skill, index) => (
-            <>
-              <ScrollReveal x={20} duration="1000ms" threshold={0.75}>
-                <Badge key={index}>{skill}</Badge>
-              </ScrollReveal>
-            </>
+            <ScrollReveal x={20} duration="1000ms" threshold={0.75} key={index}>
+              <Badge>{skill}</Badge>
+            </ScrollReveal>
           ))}
         </CardFooter>
       </StarsCard>
