@@ -10,6 +10,7 @@ import Link from "next/link";
 import { Spotlight } from "./aceternity/Spotlight";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import SectionWrapper from "./custom/SectionWrapper";
 
 interface Project {
   feature_cover: string;
@@ -83,7 +84,7 @@ const projects: Project[] = [
 
 export default function Projects() {
   return (
-    <>
+    <SectionWrapper>
       <h2 className="mb-40 text-5xl font-bold tracking-tight text-center text-primary">
         projects
       </h2>
@@ -101,7 +102,7 @@ export default function Projects() {
           />
         ))}
       </div>
-    </>
+    </SectionWrapper>
   );
 }
 
@@ -133,68 +134,60 @@ function GradientCard({
   };
 
   return (
-    <>
-      <div
-        ref={cardRef}
-        onMouseMove={handleMouseMove}
-        className={cn(
-          "relative z-0 group overflow-hidden h-full border border-white/[0.08] rounded-xl bg-[radial-gradient(450px_circle_at_var(--cursor-x)_var(--cursor-y),#8ecae6_0,transparent,transparent_80%)]",
-          className
-        )}
-      >
-        <AspectRatio ratio={10 / 5}>
-          <Image
-            src={project.feature_cover}
-            alt="geniesafe"
-            fill
-            objectFit="cover"
-            className="border-t border-white/[0.08] rounded-t-xl"
-          />
-        </AspectRatio>
-        <div className="space-y-6 relative z-10 p-6">
-          <div className="flex justify-between">
-            <div className="flex flex-col space-y-1.5">
-              <h3 className="text-xl font-semibold leading-none tracking-tight">
-                {project.title}
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                {project.subtitle}
-              </p>
-            </div>
-            <div className="flex">
-              {project.live && (
-                <>
-                  <Button variant="ghost" size={"icon"} asChild>
-                    <Link href={project.live} target="_blank">
-                      <GlobeIcon className="w-6 h-6" />
-                    </Link>
-                  </Button>
-                </>
-              )}
-              {project.github && (
-                <>
-                  <Button variant="ghost" size={"icon"} asChild>
-                    <Link href={project.github} target="_blank">
-                      <GitHubLogoIcon className="w-6 h-6" />
-                    </Link>
-                  </Button>
-                </>
-              )}
-            </div>
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      className={cn(
+        "relative z-0 group overflow-hidden h-full border border-white/[0.08] rounded-xl bg-[radial-gradient(450px_circle_at_var(--cursor-x)_var(--cursor-y),#8ecae6_0,transparent,transparent_80%)]",
+        className
+      )}
+    >
+      <AspectRatio ratio={10 / 5}>
+        <Image
+          src={project.feature_cover}
+          alt="geniesafe"
+          fill
+          sizes="100vw"
+          className="object-cover border-t border-white/[0.08] rounded-t-xl"
+        />
+      </AspectRatio>
+      <div className="space-y-6 relative z-10 p-6">
+        <div className="flex justify-between">
+          <div className="flex flex-col space-y-1.5">
+            <h3 className="text-xl font-semibold leading-none tracking-tight">
+              {project.title}
+            </h3>
+            <p className="text-sm text-muted-foreground">{project.subtitle}</p>
           </div>
-          <p className="text-card-foreground">{project.description}</p>
-          <div className="flex gap-2 flex-wrap">
-            {project.stack.map((stack, index) => (
-              <Badge key={index}>{stack}</Badge>
-            ))}
+          <div className="flex">
+            {project.live && (
+              <Button variant="ghost" size={"icon"} asChild>
+                <Link href={project.live} target="_blank">
+                  <GlobeIcon className="w-6 h-6" />
+                </Link>
+              </Button>
+            )}
+            {project.github && (
+              <Button variant="ghost" size={"icon"} asChild>
+                <Link href={project.github} target="_blank">
+                  <GitHubLogoIcon className="w-6 h-6" />
+                </Link>
+              </Button>
+            )}
           </div>
         </div>
-        <div
-          ref={shadowRef}
-          className="opacity-0 absolute top-0 left-0 w-4/5 h-4/5 duration-150 group-hover:opacity-90"
-        ></div>
-        <div className="absolute inset-[1px] -z-10 rounded-b-xl bg-card"></div>
+        <p className="text-card-foreground">{project.description}</p>
+        <div className="flex gap-2 flex-wrap">
+          {project.stack.map((stack, index) => (
+            <Badge key={index}>{stack}</Badge>
+          ))}
+        </div>
       </div>
-    </>
+      <div
+        ref={shadowRef}
+        className="opacity-0 absolute top-0 left-0 w-4/5 h-4/5 duration-150 group-hover:opacity-90"
+      ></div>
+      <div className="absolute inset-[1px] -z-10 rounded-b-xl bg-card"></div>
+    </div>
   );
 }

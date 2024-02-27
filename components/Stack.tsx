@@ -8,6 +8,8 @@ import {
 import { cn } from "@/lib/utils";
 import { Meteors } from "./aceternity/Metors";
 import Link from "next/link";
+import SectionWrapper from "./custom/SectionWrapper";
+import React from "react";
 
 interface Stack {
   type: string;
@@ -125,34 +127,36 @@ const stackItems: Stack[] = [
 ];
 
 export default function Stack() {
-  return <StackTable />;
+  return (
+    <SectionWrapper className="mb-60">
+      <StackTable />
+    </SectionWrapper>
+  );
 }
 
 function StackTable() {
   return (
-    <>
-      <Card className={cn("w-full max-w-3xl")} id="stack">
-        <CardHeader className="relative overflow-hidden">
-          <CardTitle className="mb-6 text-5xl font-bold tracking-tight text-center text-primary">
-            stack
-          </CardTitle>
-          <CardDescription className="text-center text-primary-foreground">
-            The stuff that I use for my coding sesh
-          </CardDescription>
-          <Meteors number={30} />
-        </CardHeader>
-        <CardContent className={cn("p-0")}>
-          {stackItems.map((stack, index) => (
-            <StackTableRow
-              key={index}
-              stack={stack}
-              index={index}
-              className={index == stackItems.length - 1 ? "rounded-b-xl" : ""}
-            />
-          ))}
-        </CardContent>
-      </Card>
-    </>
+    <Card className={cn("w-full max-w-3xl")} id="stack">
+      <CardHeader className="relative overflow-hidden">
+        <CardTitle className="mb-6 text-5xl font-bold tracking-tight text-center text-primary">
+          stack
+        </CardTitle>
+        <CardDescription className="text-center text-primary-foreground">
+          The stuff that I use for my coding sesh
+        </CardDescription>
+        <Meteors number={30} />
+      </CardHeader>
+      <CardContent className={cn("p-0")}>
+        {stackItems.map((stack, index) => (
+          <StackTableRow
+            key={index}
+            stack={stack}
+            index={index}
+            className={index == stackItems.length - 1 ? "rounded-b-xl" : ""}
+          />
+        ))}
+      </CardContent>
+    </Card>
   );
 }
 
@@ -178,17 +182,15 @@ function StackTableRow({
       </p>
       <div className="flex flex-col text-sm text-muted-foreground md:col-span-2 xl:text-base">
         {stack.items.map((item, i) => (
-          <>
+          <React.Fragment key={i}>
             {item.link ? (
-              <Link href={item.link} key={i}>
-                <span className="hover:text-primary/80">
-                  {item.name}
-                </span>
+              <Link href={item.link}>
+                <span className="hover:text-primary/80">{item.name}</span>
               </Link>
             ) : (
-              <span key={i}>{item.name}</span>
+              <span>{item.name}</span>
             )}
-          </>
+          </React.Fragment>
         ))}
       </div>
     </div>

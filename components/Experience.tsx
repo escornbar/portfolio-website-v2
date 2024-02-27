@@ -10,6 +10,7 @@ import {
   CardTitle,
   StarsCard,
 } from "./ui/card";
+import SectionWrapper from "./custom/SectionWrapper";
 
 interface Experience {
   title: string;
@@ -68,53 +69,49 @@ const experiences: Experience[] = [
 
 export default function Experience() {
   return (
-    <TracingBeam>
-      <h2 className="mb-40 text-5xl font-bold tracking-tight text-center text-primary">
-        experience
-      </h2>
+    <SectionWrapper>
+      <TracingBeam>
+        <h2 className="mb-40 text-5xl font-bold tracking-tight text-center text-primary">
+          experience
+        </h2>
 
-      <div className="flex flex-col gap-20" id="experience">
-        {experiences.map((experience, index) => (
+        <div className="flex flex-col gap-20" id="experience">
+          {experiences.map((experience, index) => (
             <ExperienceComponent experience={experience} key={index} />
-        ))}
-      </div>
-    </TracingBeam>
+          ))}
+        </div>
+      </TracingBeam>
+    </SectionWrapper>
   );
 }
 
 function ExperienceComponent({ experience }: { experience: Experience }) {
   return (
-    <>
-      <StarsCard>
-        <div className="flex flex-col md:grid md:grid-cols-5 md:gap-4">
-          <CardHeader className={cn("pb-0 md:col-span-2 md:pr-0")}>
-            <ScrollReveal x={-20} duration="1000ms" threshold={0.75}>
-              <CardTitle className={cn("text-xl")}>
-                {experience.title}
-              </CardTitle>
-              <CardDescription>
-                {experience.company}
-                <br />
-                {experience.period}
-              </CardDescription>
-            </ScrollReveal>
-          </CardHeader>
-          <CardContent className={cn("pt-6 md:pl-0 md:col-span-3")}>
-            <ScrollReveal y={-20} duration="1000ms" threshold={0.75}>
-              <p>{experience.description}</p>
-            </ScrollReveal>
-          </CardContent>
-        </div>
-        <CardFooter className={cn("flex gap-2 flex-wrap")}>
-          {experience.skills.map((skill, index) => (
-            <>
-              <ScrollReveal x={20} duration="1000ms" threshold={0.75}>
-                <Badge key={index}>{skill}</Badge>
-              </ScrollReveal>
-            </>
-          ))}
-        </CardFooter>
-      </StarsCard>
-    </>
+    <StarsCard>
+      <div className="flex flex-col md:grid md:grid-cols-5 md:gap-4">
+        <CardHeader className={cn("pb-0 md:col-span-2 md:pr-0")}>
+          <ScrollReveal x={-20} duration="1000ms" threshold={0.75}>
+            <CardTitle className={cn("text-xl")}>{experience.title}</CardTitle>
+            <CardDescription>
+              {experience.company}
+              <br />
+              {experience.period}
+            </CardDescription>
+          </ScrollReveal>
+        </CardHeader>
+        <CardContent className={cn("pt-6 md:pl-0 md:col-span-3")}>
+          <ScrollReveal y={-20} duration="1000ms" threshold={0.75}>
+            <p>{experience.description}</p>
+          </ScrollReveal>
+        </CardContent>
+      </div>
+      <CardFooter className={cn("flex gap-2 flex-wrap")}>
+        {experience.skills.map((skill, index) => (
+          <ScrollReveal x={20} duration="1000ms" threshold={0.75} key={index}>
+            <Badge>{skill}</Badge>
+          </ScrollReveal>
+        ))}
+      </CardFooter>
+    </StarsCard>
   );
 }

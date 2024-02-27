@@ -73,36 +73,31 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <>
-      <div className={`min-w-screen sticky top-0 z-20 backdrop-blur-lg backdrop-filter`}>
-        <div className="container mx-auto grid grid-cols-2 lg:grid-cols-3 items-center py-6">
-          <Logo />
-          <NavigationMenu className="hidden lg:flex">
-            <NavigationMenuList>
-              {links.map((link, idx) => (
-                <NavigationMenuItem key={idx}>
-                  <Link
-                    href={pathCheck(pathname, link)}
-                    legacyBehavior
-                    passHref
-                  >
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      {link.label}
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
-          <div className="flex gap-1 justify-self-end">
-            <ThemeToggle />
-            <MobileNav />
-          </div>
+    <div
+      className={`min-w-screen sticky top-0 z-20 backdrop-blur-lg backdrop-filter`}
+    >
+      <div className="container mx-auto grid grid-cols-2 lg:grid-cols-3 items-center py-6">
+        <Logo />
+        <NavigationMenu className="hidden lg:flex">
+          <NavigationMenuList>
+            {links.map((link, idx) => (
+              <NavigationMenuItem key={idx}>
+                <NavigationMenuLink
+                  href={pathCheck(pathname, link)}
+                  className={navigationMenuTriggerStyle()}
+                >
+                  {link.label}
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            ))}
+          </NavigationMenuList>
+        </NavigationMenu>
+        <div className="flex gap-1 justify-self-end">
+          <ThemeToggle />
+          <MobileNav />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
