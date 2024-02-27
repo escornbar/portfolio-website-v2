@@ -147,7 +147,6 @@ function GradientCard({
           src={project.feature_cover}
           alt="geniesafe"
           fill
-          sizes="100vw"
           className="object-cover border-t border-white/[0.08] rounded-t-xl"
         />
       </AspectRatio>
