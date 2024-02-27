@@ -28,7 +28,7 @@ const socials = [
 export default function Footer() {
   return (
     <>
-      <div className="container mx-auto flex flex-col justify-center items-center gap-4 py-6 mt-60">
+      <div className="container mx-auto flex flex-col justify-center items-center gap-4 py-6">
         <span className="text-sm">
           &copy;&nbsp;&nbsp;Syaamil Fa&apos;iq &#x2022; 2024
         </span>
