@@ -38,6 +38,7 @@ export default function Hero() {
               sizes="100vw"
               src={"/syaamil.png"}
               alt="hero-image"
+              priority
             ></Image>
           </div>
           <div className="absolute inset-0 z-0 flex flex-col justify-center gap-4 opacity-15">
