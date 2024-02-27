@@ -20,6 +20,8 @@ export default function ScrollReveal({
   const [intersecting, setIntersecting] = useState(false);
 
   useEffect(() => {
+    let observerRefValue: Element | null = null;
+
     if (ref.current) {
       const intersectionObserver = new IntersectionObserver(
         (entries) => {
@@ -35,14 +37,15 @@ export default function ScrollReveal({
       );
 
       intersectionObserver.observe(ref.current);
+      observerRefValue = ref.current;
 
       return () => {
-        if (ref.current) {
-          intersectionObserver.unobserve(ref.current);
+        if (observerRefValue) {
+          intersectionObserver.unobserve(observerRefValue);
         }
       };
     }
-  }, []);
+  });
 
   return (
     <div
