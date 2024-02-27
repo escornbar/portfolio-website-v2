@@ -125,7 +125,7 @@ const resumeContent: Content = {
     },
     {
       name: "syaamilfaiq.com",
-      link: "https://www.syaamilfaiq.com",
+      link: "https://www.syaamilfaiq.net",
       icon: <GlobeIcon className="w-5 h-5" />,
     },
   ],
