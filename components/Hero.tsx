@@ -35,6 +35,7 @@ export default function Hero() {
             <Image
               className="object-contain"
               fill
+              sizes="100vw"
               src={"/syaamil.png"}
               alt="hero-image"
             ></Image>
