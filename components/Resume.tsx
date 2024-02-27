@@ -13,8 +13,9 @@ import {
   GlobeIcon,
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
-import { ArrowDownToLine } from "lucide-react";
+import { ArrowDownToLine, HardDriveDownload } from "lucide-react";
 import Link from "next/link";
+import { Button } from "./ui/button";
 
 interface Content {
   name: string;
@@ -124,7 +125,7 @@ const resumeContent: Content = {
     },
     {
       name: "syaamilfaiq.com",
-      link: "syaamilfaiq.com",
+      link: "https://www.syaamilfaiq.com",
       icon: <GlobeIcon className="w-5 h-5" />,
     },
   ],
@@ -137,13 +138,13 @@ export default function Resume() {
       <CardContent className="p-4">
         <ResumeContent resume={resumeContent} />
       </CardContent>
-      <CardFooter className="flex p-6 bg-primary rounded-b-xl">
-        {/* <Button variant={"ghost"} size={"lg"} className="" asChild> */}
-        <Link href="#" className="flex justify-center items-center">
-          <ArrowDownToLine className="w-4 h-4 mr-2" />
-          download
-        </Link>
-        {/* </Button> */}
+      <CardFooter className="flex justify-end items-center p-6 bg-primary rounded-b-xl text-base">
+        <Button variant={"secondary"} asChild>
+          <Link href="/syaamil-resume.pdf" download="syaamil-resume.pdf" target="_blank" rel="noreferrer" className="flex justify-center items-center">
+            <HardDriveDownload className="w-4 h-4 mr-2" />
+            download
+          </Link>
+        </Button>
       </CardFooter>
     </Card>
   );
@@ -246,7 +247,9 @@ function ResumeContent({ resume }: { resume: Content }) {
                 key={index}
               >
                 {social.icon}
-                <span className="text-black/60 hover:text-[#8ecae6]/70 text-sm transition-colors duration-500 ease-in-out">{social.name}</span>
+                <span className="text-black/60 hover:text-[#8ecae6]/70 text-sm transition-colors duration-500 ease-in-out">
+                  {social.name}
+                </span>
               </Link>
             ))}
           </div>
