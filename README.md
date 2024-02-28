@@ -1,3 +1,6 @@
+[![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fescornbar%2Fportfolio-website-v2&countColor=%23263759&labelStyle=lower)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2Fescornbar%2Fportfolio-website-v2)
+<br/>
+<br/>
 ![cover](https://github.com/escornbar/portfolio-website-v2/assets/74599637/46a5124d-6128-437b-86da-da6b3c6f5162)
 
 <h1 align="center">
