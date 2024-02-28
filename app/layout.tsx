@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
-import localFont from "next/font/local";
 import "./globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/custom/Navbar";
@@ -31,14 +31,12 @@ export default function RootLayout({
           manrope.variable
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-        >
+        <ThemeProvider attribute="class" defaultTheme="dark">
           <Navbar />
           {children}
           <Footer />
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
