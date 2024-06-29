@@ -48,10 +48,10 @@ const links = [
     },
   },
   {
-    label: "stack",
+    label: "setup",
     href: {
       pathname: "/",
-      id: "#stack",
+      id: "#setup",
     },
   },
   {
