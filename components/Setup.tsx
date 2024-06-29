@@ -11,17 +11,17 @@ import Link from "next/link";
 import SectionWrapper from "./custom/SectionWrapper";
 import React from "react";
 
-interface Stack {
+interface Setup {
   type: string;
-  items: StackItem[];
+  items: SetupItem[];
 }
 
-interface StackItem {
+interface SetupItem {
   name: string;
   link: string | null;
 }
 
-const stackItems: Stack[] = [
+const setupItems: Setup[] = [
   {
     type: "Machine",
     items: [
@@ -126,20 +126,20 @@ const stackItems: Stack[] = [
   },
 ];
 
-export default function Stack() {
+export default function Setup() {
   return (
     <SectionWrapper className="mb-60">
-      <StackTable />
+      <SetupTable />
     </SectionWrapper>
   );
 }
 
-function StackTable() {
+function SetupTable() {
   return (
-    <Card className={cn("w-full max-w-3xl")} id="stack">
+    <Card className={cn("w-full max-w-3xl")} id="setup">
       <CardHeader className="relative overflow-hidden">
         <CardTitle className="mb-6 text-5xl font-bold tracking-tight text-center text-primary">
-          stack
+          setup
         </CardTitle>
         <CardDescription className="text-center text-primary-foreground">
           The stuff that I use for my coding sesh
@@ -147,12 +147,12 @@ function StackTable() {
         <Meteors number={30} />
       </CardHeader>
       <CardContent className={cn("p-0")}>
-        {stackItems.map((stack, index) => (
-          <StackTableRow
+        {setupItems.map((setup, index) => (
+          <SetupTableRow
             key={index}
-            stack={stack}
+            setup={setup}
             index={index}
-            className={index == stackItems.length - 1 ? "rounded-b-xl" : ""}
+            className={index == setupItems.length - 1 ? "rounded-b-xl" : ""}
           />
         ))}
       </CardContent>
@@ -160,12 +160,12 @@ function StackTable() {
   );
 }
 
-function StackTableRow({
-  stack,
+function SetupTableRow({
+  setup,
   index,
   className,
 }: {
-  stack: Stack;
+  setup: Setup;
   index: number;
   className?: string;
 }) {
@@ -178,10 +178,10 @@ function StackTableRow({
       )}
     >
       <p className="font-bold text-sm md:col-span-1 xl:text-base">
-        {stack.type}
+        {setup.type}
       </p>
       <div className="flex flex-col text-sm text-muted-foreground md:col-span-2 xl:text-base">
-        {stack.items.map((item, i) => (
+        {setup.items.map((item, i) => (
           <React.Fragment key={i}>
             {item.link ? (
               <Link href={item.link}>

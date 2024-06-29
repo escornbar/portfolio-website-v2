@@ -45,8 +45,8 @@ const experiences: Experience[] = [
   },
   {
     title: "Frontend Developer",
-    company: "Stealth Startup",
-    period: "Feb 2023 - present",
+    company: "Revo Global",
+    period: "Feb 2023 - Mar 2024",
     description:
       "I directed a dynamic team of 3, crafting captivating web and mobile apps along with a compelling landing site, all with a focus on user engagement. Spearheading frontend development, I upheld industry best practices to ensure stellar user experience and performance. Leveraging a no-code solution, we swiftly deployed the company's landing site, maintaining a competitive edge in the industry. I facilitated communication with upper management, securing operational expenditures to boost team productivity. Thorough code reviews were conducted to uphold top-tier code quality and prevent tech debt.",
     skills: [
@@ -63,6 +63,20 @@ const experiences: Experience[] = [
       "Supabase",
       "SQL",
       "Git",
+    ],
+  },
+  {
+    title: "Software Engineer 1",
+    company: "Dell Technologies",
+    period: "Mar 2024 - present",
+    description:
+      "",
+    skills: [
+      "Angular",
+      "ASP .NET",
+      "Playwright",
+      "Microfrontend",
+      "Microservices",
     ],
   },
 ];
@@ -99,13 +113,13 @@ function ExperienceComponent({ experience }: { experience: Experience }) {
             </CardDescription>
           </ScrollReveal>
         </CardHeader>
-        <CardContent className={cn("pt-6 md:pl-0 md:col-span-3")}>
+        <CardContent className={cn("pt-6 pb-0 md:pl-0 md:col-span-3")}>
           <ScrollReveal y={-20} duration="1000ms" threshold={0.75}>
             <p>{experience.description}</p>
           </ScrollReveal>
         </CardContent>
       </div>
-      <CardFooter className={cn("flex gap-2 flex-wrap")}>
+      <CardFooter className={cn("pt-6 flex gap-2 flex-wrap")}>
         {experience.skills.map((skill, index) => (
           <ScrollReveal x={20} duration="1000ms" threshold={0.75} key={index}>
             <Badge>{skill}</Badge>
