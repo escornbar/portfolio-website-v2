@@ -69,16 +69,23 @@ const resumeContent: Content = {
   ],
   experience_list: [
     {
+      title: "Software Engineer 1",
+      institution: "Dell Technologies",
+      period: "Mar 2024 - present",
+      description: [],
+      image: "/dell-technologies-logo-short.jpg",
+    },
+    {
       title: "Frontend Developer",
-      institution: "Stealth Startup",
-      period: "Feb 2023 - present",
+      institution: "Revo Global",
+      period: "Feb 2023 - Mar 2024",
       description: [
         "Guided a dynamic team of 3 in designing captivating web, mobile apps, and a compelling landing site, prioritizing user engagement and satisfaction.",
         "Led frontend development, adhering to industry best practices, ensuring a solid foundation for exceptional user experience and performance.",
         "Employed a no-code solution to swiftly deploy the company's landing site, accelerating time to market and staying ahead in the industry.",
         "Facilitated communication with upper management, advocating for operational expenditures to enhance team productivity and efficiency.",
       ],
-      image: "/stealth-startup-logo.jpg",
+      image: "/revoglobal_logo.jpg",
     },
     {
       title: "Intern",
@@ -139,12 +146,12 @@ export default function Resume() {
         <ResumeContent resume={resumeContent} />
       </CardContent>
       <CardFooter className="flex justify-end items-center p-6 bg-primary rounded-b-xl text-base">
-        <Button variant={"secondary"} asChild>
+        {/* <Button variant={"secondary"} asChild>
           <Link href="/syaamil-resume.pdf" download="syaamil-resume.pdf" target="_blank" rel="noreferrer" className="flex justify-center items-center">
             <HardDriveDownload className="w-4 h-4 mr-2" />
             download
           </Link>
-        </Button>
+        </Button> */}
       </CardFooter>
     </Card>
   );
